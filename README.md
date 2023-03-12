@@ -11,14 +11,16 @@ from sklearn.metrics.pairwise import cosine_similarity<br>
 data=pd.read_csv('TripAdvisor_Restauarant.csv')<br>
 data.head()<br>
 
-![result]()
+![result](https://github.com/Sanketarali/Restaurant-Recommendation-System-using-Python/blob/main/Screenshot%20(3001).png)
 
 I will select two columns from the dataset for the rest of the task (Name, Type):<br><br>
 data=data[['Name','Type']]<br>
 data<br>
+![result](https://github.com/Sanketarali/Restaurant-Recommendation-System-using-Python/blob/main/Screenshot%20(3004).png)
 
 Before moving forward, let’s have a look at whether the data contains any null values or not:<br>
 data.isnull().sum()<br><br>
+
 Name     0<br>
 Type    13<br>
 dtype: int64<br>
@@ -46,3 +48,5 @@ def restaurant_recommendation(name, similarity = similarity):<br>
     restaurantindices = [i[0] for i in similarity_scores]<br>
     return data['Name'].iloc[restaurantindices]<br>
 print(restaurant_recommendation("Market Grill"))<br>
+
+![result](https://github.com/Sanketarali/Restaurant-Recommendation-System-using-Python/blob/main/Screenshot%20(3003).png)
