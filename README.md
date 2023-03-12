@@ -16,6 +16,7 @@ data.head()<br>
 <h3>I will select two columns from the dataset for the rest of the task (Name, Type):</h3><br><br>
 data=data[['Name','Type']]<br>
 data<br>
+
 ![result](https://github.com/Sanketarali/Restaurant-Recommendation-System-using-Python/blob/main/Screenshot%20(3004).png)
 
 <h3>Before moving forward, let’s have a look at whether the data contains any null values or not:</h3><br>
