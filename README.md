@@ -13,32 +13,32 @@ data.head()<br>
 
 ![result](https://github.com/Sanketarali/Restaurant-Recommendation-System-using-Python/blob/main/Screenshot%20(3001).png)
 
-I will select two columns from the dataset for the rest of the task (Name, Type):<br><br>
+<h3>I will select two columns from the dataset for the rest of the task (Name, Type):</h3><br><br>
 data=data[['Name','Type']]<br>
 data<br>
 ![result](https://github.com/Sanketarali/Restaurant-Recommendation-System-using-Python/blob/main/Screenshot%20(3004).png)
 
-Before moving forward, let’s have a look at whether the data contains any null values or not:<br>
-data.isnull().sum()<br><br>
+<h3>Before moving forward, let’s have a look at whether the data contains any null values or not:</h3><br>
+data.isnull().sum()<br>
 
 Name     0<br>
 Type    13<br>
 dtype: int64<br>
 
-So the data has some null values in the Type column. I will delete the rows containing null values before moving forward:<br>
+<h3>So the data has some null values in the Type column. I will delete the rows containing null values before moving forward:</h3><br><br>
 data = data.dropna()<br>
 
-The type of restaurant is a valuable feature in the data to build a recommendation system. The type column here represents the category of restaurants. For example, if a customer likes vegetarian-friendly restaurants, he will only look at the recommendations if they are vegetarian friendly too. So I will use the Type column as the feature to recommend similar restaurants to the customer<br>
+<h3>The type of restaurant is a valuable feature in the data to build a recommendation system. The type column here represents the category of restaurants. For example, if a customer likes vegetarian-friendly restaurants, he will only look at the recommendations if they are vegetarian friendly too. So I will use the Type column as the feature to recommend similar restaurants to the customer</h3><br>
 
 feature = data["Type"].tolist()<br>
 tfidf = text.TfidfVectorizer(input=feature, stop_words="english")<br>
 tfidf_matrix = tfidf.fit_transform(feature)<br>
 similarity = cosine_similarity(tfidf_matrix)<br>
 
-Now I will set the name of the restaurant as an index so that we can find similar restaurants by giving the name of the restaurant as an input:<br>
+<h3>Now I will set the name of the restaurant as an index so that we can find similar restaurants by giving the name of the restaurant as an input:</h3><br>
 indices = pd.Series(data.index, index=data['Name']).drop_duplicates()<br>
 
-function to recommend similar restaurants:<br>
+<h3>function to recommend similar restaurants:</h3><br>
 
 def restaurant_recommendation(name, similarity = similarity):<br>
     index = indices[name]<br>
